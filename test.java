@@ -12,7 +12,7 @@ import ru.diasoft.core.application.dto.meta.MetaObjectAttribute;
 import ru.diasoft.flextera.ftsched.utils.LogExt;
 import ru.diasoft.utils.XMLUtil;
 
-/** Выходные параметры внешней АПИ */
+/** РўРµСЃС‚РѕРєРѕРјРјРµРЅС‚ */
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
 	name = "BaseOutput",
@@ -20,23 +20,24 @@ import ru.diasoft.utils.XMLUtil;
 		"processID",
 		"notificationList",
 		"returnCode",
-		"returnMsg" 
+		"returnMsg" ,
+		"wtf"
 	}
 )
 public class BaseOutput extends AbstractTransferObject {
 
 	private static final long serialVersionUID = 1L;
 
-	/** Идентификатор процесса */
+	/** Г€Г¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГЇГ°Г®Г¶ГҐГ±Г±Г  */
 	public static final String PROPERTY_PROCESS_ID = "ProcessID";
 
-	/** Список ошибок */
+	/** Г‘ГЇГЁГ±Г®ГЄ Г®ГёГЁГЎГ®ГЄ */
 	public static final String PROPERTY_NOTIFICATION_LIST = "NotificationList";
 
-	/** Код сообщения об ошибке */
+	/** ГЉГ®Г¤ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	public static final String PROPERTY_RETURN_CODE = "ReturnCode";
 
-	/** Текст сообщения об ошибке */
+	/** Г’ГҐГЄГ±ГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	public static final String PROPERTY_RETURN_MSG = "ReturnMsg";
 
 	//------------------------------------------------------------
@@ -52,7 +53,7 @@ public class BaseOutput extends AbstractTransferObject {
 	//------------------------------------------------------------
 
 	/**
-	 * Выходные параметры внешней АПИ
+	 * Г‚Г»ГµГ®Г¤Г­Г»ГҐ ГЇГ Г°Г Г¬ГҐГІГ°Г» ГўГ­ГҐГёГ­ГҐГ© ГЂГЏГ€
 	 */
     public BaseOutput(){
 		super( INFO );
@@ -60,7 +61,7 @@ public class BaseOutput extends AbstractTransferObject {
 
     //------------------------------------------------------------
 
-    /** Идентификатор процесса */
+    /** Г€Г¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГЇГ°Г®Г¶ГҐГ±Г±Г  */
 	@XmlElement(name = PROPERTY_PROCESS_ID, required = false)
 	public Long getProcessID() {
 		return getProperty( PROPERTY_PROCESS_ID );
@@ -68,7 +69,7 @@ public class BaseOutput extends AbstractTransferObject {
 
 	//------------------------------------------------------------
 
-	/** Список ошибок */
+	/** Г‘ГЇГЁГ±Г®ГЄ Г®ГёГЁГЎГ®ГЄ */
 	@XmlElement(name = PROPERTY_NOTIFICATION_LIST, required = false)
 	public List<BaseNotificationList> getNotificationList(){
 		return getProperty( PROPERTY_NOTIFICATION_LIST );
@@ -76,26 +77,26 @@ public class BaseOutput extends AbstractTransferObject {
 
 	//------------------------------------------------------------
 
-	/** Код сообщения об ошибке */
+	/** ГЉГ®Г¤ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	@XmlElement(name = PROPERTY_RETURN_CODE, required = false)
 	public Long getReturnCode(){
 		return getProperty( PROPERTY_RETURN_CODE );
 	}
 
-	/** Код сообщения об ошибке */
+	/** ГЉГ®Г¤ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	public void setReturnCode( Long returnCode ){
 		setProperty( PROPERTY_RETURN_CODE, returnCode );
 	}
 
 	//------------------------------------------------------------
 
-	/** Текст сообщения об ошибке */
+	/** Г’ГҐГЄГ±ГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	@XmlElement(name = PROPERTY_RETURN_MSG, required = false)
 	public String getReturnMsg(){
 		return getProperty( PROPERTY_RETURN_MSG );
 	}
 
-	/** Текст сообщения об ошибке */
+	/** Г’ГҐГЄГ±ГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Г®ГЎ Г®ГёГЁГЎГЄГҐ */
 	public void setReturnMsg( String returnMsg ){
 		setProperty( PROPERTY_RETURN_MSG, returnMsg );
 	}
@@ -111,8 +112,8 @@ public class BaseOutput extends AbstractTransferObject {
 		if( output != null ){
 
 			try{
-				// Хотя мы просили не оборачивать ответ в Result-обёртку, это всё же могло произойти.
-				// Извлечём результат.
+				// Г•Г®ГІГї Г¬Г» ГЇГ°Г®Г±ГЁГ«ГЁ Г­ГҐ Г®ГЎГ®Г°Г Г·ГЁГўГ ГІГј Г®ГІГўГҐГІ Гў Result-Г®ГЎВёГ°ГІГЄГі, ГЅГІГ® ГўГ±Вё Г¦ГҐ Г¬Г®ГЈГ«Г® ГЇГ°Г®ГЁГ§Г®Г©ГІГЁ.
+				// Г€Г§ГўГ«ГҐГ·ВёГ¬ Г°ГҐГ§ГіГ«ГјГІГ ГІ.
 				if( output.containsKey(XMLUtil.RET_RESULT) ){
 					output = (Map<String,Object>)output.get( XMLUtil.RET_RESULT );
 					
@@ -132,6 +133,6 @@ public class BaseOutput extends AbstractTransferObject {
 
 	//------------------------------------------------------------
 
-	/** Код успешного вызова АПИ */
+	/** ГЉГ®Г¤ ГіГ±ГЇГҐГёГ­Г®ГЈГ® ГўГ»Г§Г®ГўГ  ГЂГЏГ€ */
 	public static final Long RET_CODE_SUCCESS = 0L;
 }
