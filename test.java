@@ -21,7 +21,7 @@ import ru.diasoft.utils.XMLUtil;
 		"notificationList",
 		"returnCode",
 		"returnMsg" ,
-		"wtf"
+		"wtf2"
 	}
 )
 public class BaseOutput extends AbstractTransferObject {
