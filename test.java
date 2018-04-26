@@ -12,7 +12,7 @@ import ru.diasoft.core.application.dto.meta.MetaObjectAttribute;
 import ru.diasoft.flextera.ftsched.utils.LogExt;
 import ru.diasoft.utils.XMLUtil;
 
-/** Тестокоммент */
+/** Тестокоммент!!! */
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(
 	name = "BaseOutput",
